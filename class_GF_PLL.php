@@ -2,18 +2,13 @@
 
 if(!class_exists('GF_PLL')) :
 
-
 class GF_PLL {
-
-
   private $whitelist;
   private $blacklist;
   private $registered_strings;
   private $form;
-  
-  
-  public function __construct() {
 
+  public function __construct() {
     $this->whitelist = array(
       'title', 
       'description', 
@@ -32,25 +27,18 @@ class GF_PLL {
     );
 
     $this->blacklist = array();
-
     $this->registered_strings = array();
-
   }
 
-
   private function is_translatable($key, $value) {
-
     return 
       $key && 
       in_array($key, $this->whitelist) &&
       is_string($value) &&
       !in_array($value, $this->registered_strings);
-
   }
 
-
   private function iterate_form(&$value, $key, $callback = null) {
-
     if(!$callback && is_callable($key)) {
       $callback = $key;
     }
@@ -66,12 +54,9 @@ class GF_PLL {
         $callback($value, $key);
       }
     }
-
   }
 
-
   public function register_strings() {
-
     if(!class_exists('GFAPI') || !function_exists('pll_register_string')) return;
 
     $forms = GFAPI::get_forms();
@@ -86,23 +71,17 @@ class GF_PLL {
         $this->registered_strings[] = $value;
       });
     }
-
   }
 
-
   public function translate_strings($form) {
-
     if(function_exists('pll__')) {
       $this->iterate_form($form, function(&$value, $key) {
         $value = pll__($value);
       });
     }
-
+    
     return $form;
-
   }
-
-
 }
 
 endif;
