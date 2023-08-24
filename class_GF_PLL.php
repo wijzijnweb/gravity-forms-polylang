@@ -57,7 +57,8 @@ class GF_PLL {
   }
 
   public function register_strings() {
-    if(!preg_match('/^mlang/', $_GET['page']) || !class_exists('GFAPI') || !function_exists('pll_register_string')) return;
+    $page = isset($_GET['page']) ? sanitize_text_field($_GET['page']) : '';
+    if(!str_starts_with($page, 'mlang') || !class_exists('GFAPI') || !function_exists('pll_register_string')) return;
 
     $forms = GFAPI::get_forms();
     foreach ($forms as $form) {
