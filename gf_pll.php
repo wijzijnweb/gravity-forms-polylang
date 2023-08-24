@@ -1,37 +1,38 @@
 <?php
 /*
-Plugin Name: Integrate Gravity Forms + Polylang
-Plugin URI:  https://github.com/pdme/gravity-forms-polylang
-Description: Add form titles, descriptions, field labels, etc, to Polylang string translations
-Version:     0.3
-Author:      Philip Ebels
-Author URI:  https://github.com/pdme
-License:     GPL2
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Plugin Name: Gravity Forms x Polylang
+Plugin URI:  https://github.com/siebsie23/gravity-forms-polylang
+Description: This Wordpress plugin adds form titles, descriptions, field labels, etc, to Polylang string translations
+Version:     1.0.0
+Author:      siebsie23
+Author URI:  https://github.com/siebsie23
+License:     GPL2GNU General Public License v2.0
+License URI: https://github.com/siebsie23/gravity-forms-polylang/blob/master/LICENSE
 */
 
-if(!defined('ABSPATH')) exit;
-
-if(!class_exists('GF_PLL_Initialize')) :
-
-include 'class_GF_PLL.php';
-
-class GF_PLL_Initialize {
-  public static function register_strings() {
-    $gf_pll = new GF_PLL();
-    $gf_pll->register_strings();
-  }
-
-  public static function translate_strings($form) {
-    $gf_pll = new GF_PLL();
-    return $gf_pll->translate_strings($form);
-  }    
+if (!defined('ABSPATH')) {
+    exit;
 }
 
-add_action('admin_init', array('GF_PLL_Initialize', 'register_strings'), 100);
-add_filter('gform_pre_render', array('GF_PLL_Initialize', 'translate_strings'));
-add_filter('gform_pre_process', array('GF_PLL_Initialize', 'translate_strings'));
+if (!class_exists('GravityFormsPolylangInitialize')) :
+    include 'class_GF_PLL.php';
 
+    class GravityFormsPolylangInitialize
+    {
+        public static function registerStrings(): void
+        {
+            $gf_pll = new GravityFormsPolylang();
+            $gf_pll->registerStrings();
+        }
+
+        public static function translateStrings($form): mixed
+        {
+            $gf_pll = new GravityFormsPolylang();
+            return $gf_pll->translateStrings($form);
+        }
+    }
+
+    add_action('admin_init', array('GravityFormsPolylangInitialize', 'registerStrings'), 100);
+    add_filter('gform_pre_render', array('GravityFormsPolylangInitialize', 'translateStrings'));
+    add_filter('gform_pre_process', array('GravityFormsPolylangInitialize', 'translateStrings'));
 endif;
-
-?>
