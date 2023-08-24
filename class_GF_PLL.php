@@ -81,7 +81,8 @@ class GF_PLL {
       $this->iterate_form($form, function($value, $key) {
         $name = ''; // todo: suitable naming
         $group = "Form #{$this->form['id']}: {$this->form['title']}";
-        pll_register_string($name, $value, $group);
+        $multiline = ( 50 < mb_strlen( $value ) );
+        pll_register_string($name, $value, $group, $multiline);
         $this->registered_strings[] = $value;
       });
     }
