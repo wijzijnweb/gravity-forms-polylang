@@ -16,9 +16,9 @@ This Wordpress plugin adds form titles, descriptions, field labels, etc, to Poly
 
 
 == Installation ==
-Install and activate the plugin. After this, your translatable strings will appear in the \"Translations\" tab of PolyLang.
+Install and activate the plugin. After this, your translatable strings will appear in the "Translations" tab of PolyLang.
 
 == Changelog ==
 1.0.0
-- Fixed \'Undefined array key page\' error.
+- Fixed 'Undefined array key page' error.
 - Updated code styling
