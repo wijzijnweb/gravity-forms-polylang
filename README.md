@@ -5,34 +5,31 @@ This Wordpress plugin adds form titles, descriptions, field labels, etc, to Poly
 This repository is a fork of [pdme/gravity-forms-polylang](https://github.com/pdme/gravity-forms-polylang) to update the plugin to work with the latest version of wordpress and implement open pull requests of the original repository.
 
 ## Installation
-### Traditional Wordpress installation
-Download the latest version of the plugin from the [Releases](https://github.com/siebsie23/gravity-forms-polylang/releases) section manually upload a new plugin in the "plugins" section of your wordpress installation.
+### From the Wordpress plugin directory
+Gravity Forms x Polylang is available on the [Wordpress plugin directory](https://wordpress.org/plugins/translate-gravity-forms-x-polylang/).
+
+### Manual Wordpress installation
+Download the latest version of the plugin from the [Releases](https://github.com/siebsie23/gravity-forms-polylang/releases) section. You can then manually upload the zip file in the "plugins" section of your wordpress installation.
 
 ### Wordpress via composer
-Add the release as a repository to your composer.json file. Example:
+The plugin is installable via [WordPress Packagist](https://wpackagist.org/). A site that mirrors the Wordpress plugin and theme directory as a repository for composer.
+If you don't have it already, add WordPress Packagist as a repository to your composer.json file. Example:
 ```json
-"repositories": [
-    {
-        "type": "package",
-        "package": {
-            "name": "siebsie23/gravity-forms-polylang",
-            "version": "1.0.0",
-            "type": "wordpress-plugin",
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/siebsie23/gravity-forms-polylang/archive/refs/tags/1.0.0.zip"
-            },
-            "require": {
-                "ffraenz/private-composer-installer": "^5.0"
-            }
+"repositories":[
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org",
+            "only": [
+                "wpackagist-plugin/*",
+                "wpackagist-theme/*"
+            ]
         }
-    }
-]
+    ],
 ```
-And add the plugin to the requirements. Example:
+And add the Gravity Forms x Polylang plugin to the requirements section. Example:
 ```json
 "require": {
-    "siebsie23/gravity-forms-polylang": "1.0.0"
+    "wpackagist-plugin/translate-gravity-forms-x-polylang": "1.0.0"
 }
 ```
 After this, run `composer update` and activate the plugin in the "plugins" section of your wordpress installation
