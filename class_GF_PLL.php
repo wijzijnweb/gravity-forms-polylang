@@ -16,7 +16,6 @@ if (!class_exists('GravityFormsPolylang')) :
                 'description',
                 'text',
                 'content',
-                'message',
                 'defaultValue',
                 'errorMessage',
                 'placeholder',
