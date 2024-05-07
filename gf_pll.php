@@ -3,7 +3,7 @@
 Plugin Name: Translate Gravity Forms x Polylang
 Plugin URI:  https://github.com/siebsie23/gravity-forms-polylang
 Description: This Wordpress plugin adds form titles, descriptions, field labels, etc, to Polylang string translations
-Version:     1.0.0
+Version:     1.0.1
 Author:      siebsie23
 Author URI:  https://github.com/siebsie23
 License:     GPL2GNU General Public License v2.0
